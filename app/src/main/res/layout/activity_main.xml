@@ -6,13 +6,72 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <fragment
+        android:id="@+id/fragment"
+        android:name="ru.synergy.fragmentarticleexample.fragments.BlankFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_blank" />
+
+    <fragment
+        android:id="@+id/fragment_rating_bar"
+        android:name="ru.synergy.fragmentarticleexample.fragments.FragmentRatingBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/fragment"
+        app:layout_constraintStart_toStartOf="@id/fragment"
+        app:layout_constraintTop_toBottomOf="@id/fragment"
+        tools:layout="@layout/fragment_rating_bar"></fragment>
+
+    <ImageView
+        android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginLeft="@dimen/image_left_margin"
+        android:layout_marginTop="@dimen/image_margin_top"
+        android:scaleType="centerCrop"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/moron" />
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_wide"
+        android:layout_marginLeft="@dimen/margin_wide"
+        android:layout_marginEnd="@dimen/margin_wide"
+        android:layout_marginRight="@dimen/margin_wide"
+        android:text="@string/text_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@+id/image"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/image" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="@dimen/standart_margin"
+        android:layout_marginEnd="@dimen/standart_margin"
+        android:layout_marginRight="@dimen/standart_margin"
+        android:layout_marginBottom="@dimen/standart_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/title"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title">
+
+        <TextView
+            android:id="@+id/article"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_article"
+            app:layout_editor_absoluteX="8dp"
+            app:layout_editor_absoluteY="256dp" />
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
