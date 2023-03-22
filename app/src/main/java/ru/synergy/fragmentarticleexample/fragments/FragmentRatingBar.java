@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
+import android.widget.Toast;
 
 import ru.synergy.fragmentarticleexample.R;
 
@@ -25,6 +27,7 @@ public class FragmentRatingBar extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    RatingBar ratingBar;
 
     public FragmentRatingBar() {
         // Required empty public constructor
@@ -61,6 +64,21 @@ public class FragmentRatingBar extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_rating_bar, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_rating_bar, container, false);
+
+        ratingBar = (RatingBar) rootView.findViewById(R.id.rating_bar);
+        addListenerOnButton(ratingBar);
+
+        return rootView;
+    }
+
+    private void addListenerOnButton(RatingBar ratingBar) {
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                Toast.makeText(getActivity(), "Наш фанатик " + rating, Toast.LENGTH_LONG).show();
+
+            }
+        });
     }
 }
